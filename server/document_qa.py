@@ -17,8 +17,8 @@
 # # Session storage (in-memory)
 # sessions = {}
 
-GROQ_API_KEY = "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"
-GOOGLE_API_KEY = "AIzaSyADqSO8ZNAXKWaIFBo-BWWOUslKtHg0ZO4"
+GROQ_API_KEY = "GROQ_API_KEY"
+GOOGLE_API_KEY = "GOOGLE_API_KEY"
 
 # class MultiDocumentQASystem:
 #     def __init__(self):
