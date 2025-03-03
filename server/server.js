@@ -11,7 +11,7 @@ const app = express();
 const port = 3001;
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://hackathon-legal-assistance-project.vercel.app" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -195,5 +195,5 @@ app.post("/ask", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server running at ${port}`);
 });
