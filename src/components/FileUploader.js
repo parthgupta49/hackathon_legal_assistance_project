@@ -54,6 +54,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const FileUploader = ({ sessionId, onUploadSuccess }) => {
+    const BACKEND = "https://hackathon-legal-assistance-project.onrender.com";
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -73,7 +74,7 @@ const FileUploader = ({ sessionId, onUploadSuccess }) => {
         formData.append("file", file);
 
         try {
-            const response = await axios.post("http://localhost:3001/upload", formData, {
+            const response = await axios.post(`${BACKEND}/upload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

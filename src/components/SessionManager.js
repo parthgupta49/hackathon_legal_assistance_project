@@ -3,11 +3,11 @@ import axios from "axios";
 
 const SessionManager = ({ setSessionId }) => {
     const [loading, setLoading] = useState(false);
-
+    const BACKEND = "https://hackathon-legal-assistance-project.onrender.com";
     const createSession = async () => {
         setLoading(true);
         try {
-            const response = await axios.post("http://localhost:3001/create_session");
+            const response = await axios.post(`${BACKEND}/create_session`);
             setSessionId(response.data.session_id); // Call the callback with the new session ID
         } catch (error) {
             console.error("Error creating session:", error);
