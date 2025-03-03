@@ -73,10 +73,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
     //     res.json({ status: "File processed successfully", results: stdout });
     // });
     exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error("Python script error:", error.message);
-            return res.status(500).json({ error: error.message });
-        }
+        // if (error) {
+        //     console.error("Python script error:", error.message);
+        //     return res.status(500).json({ error: error.message });
+        // }
 
         // Log stderr (Python logs)
         if (stderr) {
