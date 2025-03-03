@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const SessionManager = ({ setSessionId }) => {
+    console.log("BACKEND LOCALHOST : ",url);
     const [loading, setLoading] = useState(false);
-    const BACKEND = "https://hackathon-legal-assistance-project.onrender.com";
     const createSession = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`${BACKEND}/create_session`);
+            const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/create_session`);
             setSessionId(response.data.session_id); // Call the callback with the new session ID
         } catch (error) {
             console.error("Error creating session:", error);

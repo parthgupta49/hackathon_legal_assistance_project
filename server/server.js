@@ -9,9 +9,13 @@ const upload = multer({ dest: "uploads/" }); // Files will be saved in the "uplo
 const { spawn } = require('node:child_process');
 const app = express();
 const port = 3001;
+const allowedDomains = [
+    "http://localhost:3000",
+    "https://hackathon-legal-assistance-project.vercel.app"
 
+]
 // Middleware
-app.use(cors({ origin: "https://hackathon-legal-assistance-project.vercel.app" }));
+app.use(cors({ origin: allowedDomains }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

@@ -90,7 +90,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const QuestionAsker = ({ sessionId }) => {
-    const BACKEND = "https://hackathon-legal-assistance-project.onrender.com";
     const [question, setQuestion] = useState("");
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -106,7 +105,7 @@ const QuestionAsker = ({ sessionId }) => {
             // Add user's question to the chat
             setMessages((prev) => [...prev, { sender: "user", text: question }]);
 
-            const response = await axios.post(`${BACKEND}/ask`, {
+            const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/ask`, {
                 session_id: sessionId,
                 question,
             });
