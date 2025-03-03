@@ -18,7 +18,7 @@ const SessionManager = ({ setSessionId }) => {
 
     return (
         <div>
-            <button onClick={createSession} disabled={loading}>
+            <button onClick={createSession} disabled={loading} className="border">
                 {loading ? "Creating Session..." : "Create New Session"}
             </button>
         </div>

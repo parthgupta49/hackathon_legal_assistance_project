@@ -1,6 +1,8 @@
 .App {
-  text-align: center;
+  /* text-align: center;
   padding: 20px;
+  position: absolute;
+  z-index: 100; */
 }
 
 input[type="file"], input[type="text"] {
@@ -12,7 +14,7 @@ input[type="file"], input[type="text"] {
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: transparent;
   color: white;
   border: none;
   border-radius: 5px;
@@ -20,21 +22,22 @@ button {
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #b4b1b1;
   cursor: not-allowed;
 }
 
 /* General Styles */
-.App {
+/* .App {
   font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-}
+} */
 
 h1 {
-  color: #333;
+  color: white;
+  opacity: 70%;
 }
 
 /* File Uploader Styles */
@@ -50,7 +53,7 @@ h1 {
 }
 
 .upload-button {
-  background-color: #007bff;
+  background-color: transparent;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -60,7 +63,7 @@ h1 {
 }
 
 .upload-button:hover {
-  background-color: #0056b3;
+  background-color: #414141;
 }
 
 .upload-message {
@@ -115,7 +118,7 @@ input[type="text"] {
 }
 
 button {
-  background-color: #007bff;
+  background-color: transparent;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -125,10 +128,83 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #414141;
 }
 
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+:root {
+  --border-radius: 8px;
+}
+
+.card {
+  max-width: 400px;
+  width: 100%;
+  /* margin: 50px auto; */
+  border-radius: var(--border-radius);
+  height: 1px;
+}
+
+.card .inner {
+  padding: 10px;
+
+  background: #02040e ;
+  color: #fff;
+  border-radius: var(--border-radius);
+}
+
+/* .card h3 {
+  margin-bottom: 15px;
+} */
+
+
+
+.example-2 {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-2 .inner {
+  position: relative;
+  z-index: 1;
+  width: 113%;
+}
+
+.example-2 .inner {
+  /* margin: 2px; */
+}
+
+
+.example-2::before {
+  content: "";
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(102, 102, 102, 0.75) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 300px;
+  width: 100px;
+  transform: translate(0);
+  position: absolute;
+  animation: rotate 5s linear forwards infinite;
+  z-index: 0;
+  top: 50%;
+  transform-origin: top center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

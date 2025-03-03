@@ -134,29 +134,62 @@ const QuestionAsker = ({ sessionId }) => {
     };
 
     return (
-        <div className="question-asker">
-            <h2>Chat with the Bot</h2>
-            <div className="chat-window">
-                {messages.map((message, index) => (
-                    <div
-                        key={index}
-                        className={`message ${message.sender === "user" ? "user-message" : "bot-message"}`}
-                    >
-                        {message.text}
+        <div className="space-y-6">
+            <div className="chat-container h-[500px] bg-slate-850 rounded-xl flex flex-col ">
+                <div className="chat-window flex-1 space-y-4 overflow-y-auto pr-2 ">
+                    {messages.map((message, index) => (
+                        <div
+                            key={index}
+                            className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}  `}
+                        >
+                            <div className={`max-w-[80%] p-4 rounded-2xl ${message.sender === 'user'
+                                ? 'bg-blue-600 text-white ml-auto'
+                                : 'bg-slate-700 text-slate-100'
+                                }`}>
+                                <div className="flex items-start space-x-2">
+                                    {message.sender === 'bot' && (
+                                        <div className="pt-1">
+                                            <div className="w-6 h-6 bg-purple-400 rounded-full flex items-center justify-center">
+                                                <span className="text-sm font-bold text-slate-900">AI</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div className="whitespace-pre-wrap">{message.text}</div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="input-container mt-6">
+                    <div className="flex space-x-4 items-center">
+                        <input
+                            type="text"
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                            placeholder="Ask about your legal documents..."
+                            onKeyPress={(e) => e.key === 'Enter' && handleAsk()}
+                            className="flex-1 bg-slate-700 w-[20rem] rounded-xl py-3 px-4 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+
+                        <button
+                            onClick={handleAsk}
+                            disabled={loading}
+                            className="w-14 h-14 rotate-90 border bg-gray-500 hover:bg-blue-700 disabled:bg-slate-700 rounded-xl flex items-center justify-center transition-all"
+                        >
+                            {loading ? (
+                                <svg className="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            ) : (
+                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            )}
+                        </button>
                     </div>
-                ))}
-            </div>
-            <div className="input-container">
-                <input
-                    type="text"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    placeholder="Enter your question"
-                    onKeyPress={(e) => e.key === "Enter" && handleAsk()}
-                />
-                <button onClick={handleAsk} disabled={loading}>
-                    {loading ? "Asking..." : "Ask"}
-                </button>
+                </div>
             </div>
         </div>
     );
