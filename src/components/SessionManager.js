@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const SessionManager = ({ setSessionId }) => {
-    console.log("BACKEND LOCALHOST : ",url);
     const [loading, setLoading] = useState(false);
     const createSession = async () => {
         setLoading(true);
